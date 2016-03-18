@@ -23,6 +23,9 @@ private:
     double J;  // for J
     double H;  // for Megnetic field
 
+    int to_flip;  // for Irre_Worff, branch mark
+    int Nu, Nd;   // Number of spin up and down
+
 public:
     NDIsing(int D_set,
             int L_set,
@@ -36,7 +39,6 @@ public:
     double local_E(int pos);
     double ave_E();
     double ave_M();
-
 
 //--------------Makov----------------------
     void Metropolis(int steps);
@@ -52,6 +54,14 @@ public:
     // using selected algorithm to move
 
 //---------------Write2file---------------
+    void output_m_E_Ec_M_Mc(std::string algorithm,
+                            int equi_steps,
+                            int steps,
+                            int blocks_begin,
+                            int blocks_end,
+                            int d_blocks,
+                            std::string filename);
+
     void output_T_E_C_M_X(std::string algorithm,
                           int equi_steps,
                           int ave_steps,

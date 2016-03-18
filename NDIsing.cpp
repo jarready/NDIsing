@@ -11,6 +11,7 @@ NDIsing::NDIsing(int D_set,
                  double H_set) {
     D = D_set; L = L_set; T = T_set; J = J_set; H = H_set;
 
+
     mark.resize(int(std::pow(L, D)));
     for (int i = 0; i < int(std::pow(L, D)); ++i) {
         int mod_left = i;
@@ -24,8 +25,9 @@ NDIsing::NDIsing(int D_set,
         //init locate using L base code.
         mark[i].spin = 1;
     }
-
-
+    to_flip = 1;
+    Nu = mark.size();
+    Nd = 0;  //  set Nu and Nd for Irre_Worff
 }  // end NDIsing
 
 /*
@@ -64,7 +66,6 @@ double NDIsing::ave_M() {
     M /= mark.size();  // average M
     return M;
 }//end ave_M
-
 
 
 

@@ -47,8 +47,13 @@ def Ana_T_E_C_M_X(filename):
     plt.savefig(filename[:-4]+title+".png")
     plt.close()
 def main():
-    Ana_T_E_C_M_X("./data/Metropolis/output_T_E_C_M_X(D=2,L=128).dat")
-    #Ana_T_E_C_M_X("./data/Worff/output_T_E_C_M_X(D=2,L=64).dat")
+    #Ana_T_E_C_M_X("./data/Metropolis/output_T_E_C_M_X(D=2,L=128).dat")
+    #Ana_T_E_C_M_X("./data/Worff/output_T_E_C_M_X(D=2,L=128).dat")
+    #Ana_T_E_C_M_X("./data/Irre_Worff/output_T_E_C_M_X(D=2,L=128).dat")
+
+    #Ana_T_E_C_M_X("./data/Metropolis/output_T_E_C_M_X(D=3,L=32).dat")
+    #Ana_T_E_C_M_X("./data/Worff/output_T_E_C_M_X(D=3,L=32).dat")
+    Ana_T_E_C_M_X("./data/Irre_Worff/output_T_E_C_M_X(D=3,L=32).dat")
 
 if __name__ == "__main__":
     main()
