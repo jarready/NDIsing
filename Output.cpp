@@ -11,31 +11,49 @@ void NDIsing::output_m_E_Ec_M_Mc(std::string algorithm,
                                  int blocks_end,
                                  int d_blocks,
                                  std::string filename) {
-    std::cout << "output_m_E_Ec is running (" << algorithm << ")" << std::endl;
+    std::cout << "output_m_E_Ec_M_Mc is running (" << algorithm << ")" << std::endl;
     filename += "(D=" + std::to_string(D)
-                + ",L=" + std::to_string(L)
-                + ",T=" + std::to_string(T) + ").dat";
+                + ",L=" + std::to_string(L) + ").dat";
     std::ofstream FILE(filename);
     if (FILE.is_open()) {
         std::vector<double> E, M;
         double E_ave = 0, M_ave = 0;
-        double convE, convM;
+        double Ec, Mc;
+        double E_ave_i, M_ave_i;
         Markov(algorithm, equi_steps);
         for (int step = 0; step < steps; step++) {
             E.push_back(ave_E());
             E_ave += E.back();
             M.push_back(ave_M());
-            M_ave += M.bach();
+            M_ave += M.back();
+            Markov(algorithm, 1);
+            std::cout << step << "/" << steps << "\r";
+            std::cout.flush();
         }
         E_ave /= steps; M_ave /= steps;
 
-        FILE << "m E Ec\n";
+        FILE << "equi_steps:" << equi_steps
+             << " steps:" << steps << "\n";
+        FILE << "m E Ec M Mc\n";
         for (int m = blocks_begin; m < blocks_end; m += d_blocks) {
-            convE = 0; convM = 0;
-            // TO BE FINISHED
-
-        }
-    }
+            Ec = 0; Mc = 0;
+            for (int i = 0; i < m; i++) {
+                E_ave_i = 0; M_ave_i = 0;
+                int block_size = steps / m;
+                for (int j = 0; j < block_size; j++) {
+                    E_ave_i += E[block_size * i + j];
+                    M_ave_i += M[block_size * i + j];
+                }
+                E_ave_i /= block_size;
+                M_ave_i /= block_size;
+                Ec += (E_ave_i - E_ave) * (E_ave_i - E_ave);
+                Mc += (M_ave_i - M_ave) * (M_ave_i - M_ave);
+            }  // end E_ave_i loop
+            Ec /= m * m; Ec = std::sqrt(Ec);
+            Mc /= m * m; Mc = std::sqrt(Mc);
+            FILE << m << " " << E_ave << " " << Ec << " " << M_ave << " " << Mc << "\n";
+        }  // end blocks loop
+    }  // end FILE
     FILE.close();
 }  // end output_m_E_Ec
 

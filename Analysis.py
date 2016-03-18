@@ -46,6 +46,24 @@ def Ana_T_E_C_M_X(filename):
     plt.plot(T,X,"*-")
     plt.savefig(filename[:-4]+title+".png")
     plt.close()
+
+def Ana_m_E_Ec_M_Mc(filename):
+    m,E,Ec,M,Mc = np.loadtxt(filename,unpack=True,skiprows=2)
+
+    plt.figure()
+    title = "m_Ec(E=%f)" %E[0]
+    plt.xlabel("m")
+    plt.ylabel("Ec")
+    plt.plot(m,Ec)
+    plt.savefig(filename[:-4]+title+".png")
+
+    plt.figure()
+    title = "m_Mc(M=%f)" %M[0]
+    plt.xlabel("m")
+    plt.ylabel("Mc")
+    plt.plot(m,Mc)
+    plt.savefig(filename[:-4]+title+".png")
+
 def main():
     #Ana_T_E_C_M_X("./data/Metropolis/output_T_E_C_M_X(D=2,L=128).dat")
     #Ana_T_E_C_M_X("./data/Worff/output_T_E_C_M_X(D=2,L=128).dat")
@@ -53,7 +71,15 @@ def main():
 
     #Ana_T_E_C_M_X("./data/Metropolis/output_T_E_C_M_X(D=3,L=32).dat")
     #Ana_T_E_C_M_X("./data/Worff/output_T_E_C_M_X(D=3,L=32).dat")
-    Ana_T_E_C_M_X("./data/Irre_Worff/output_T_E_C_M_X(D=3,L=32).dat")
+    #Ana_T_E_C_M_X("./data/Irre_Worff/output_T_E_C_M_X(D=3,L=32).dat")
+
+    #Ana_m_E_Ec_M_Mc("./data/Metropolis/output_m_E_Ec_M_Mc(D=2,L=64).dat")
+    #Ana_m_E_Ec_M_Mc("./data/Worff/output_m_E_Ec_M_Mc(D=2,L=64).dat")
+    #Ana_m_E_Ec_M_Mc("./data/Irre_Worff/output_m_E_Ec_M_Mc(D=2,L=64).dat")
+
+    Ana_m_E_Ec_M_Mc("./data/Metropolis/output_m_E_Ec_M_Mc(D=3,L=32).dat")
+    Ana_m_E_Ec_M_Mc("./data/Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
+    Ana_m_E_Ec_M_Mc("./data/Irre_Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
 
 if __name__ == "__main__":
     main()
