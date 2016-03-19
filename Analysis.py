@@ -104,7 +104,12 @@ def main():
     #Ana_m_E_Ec_M_Mc("./data/Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
     #Ana_m_E_Ec_M_Mc("./data/Irre_Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
 
-    Ana_corr_E_M("./data/Metropolis/autocorr_E_M(D=3,L=32).dat")
+    #Ana_corr_E_M("./data/Metropolis/autocorr_E_M(D=3,L=32).dat")
+    #Ana_corr_E_M("./data/Worff/autocorr_E_M(D=3,L=32).dat")
+    #Ana_corr_E_M("./data/Irre_Worff/autocorr_E_M(D=3,L=32).dat")
+
+    Ana_corr_E_M("./data/Worff/autocorr_E_M(D=2,L=128).dat")
+    Ana_corr_E_M("./data/Irre_Worff/autocorr_E_M(D=2,L=128).dat")
 
 if __name__ == "__main__":
     main()
