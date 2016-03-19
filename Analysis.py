@@ -52,6 +52,7 @@ def Ana_m_E_Ec_M_Mc(filename):
 
     plt.figure()
     title = "m_Ec(E=%f)" %E[0]
+    plt.title(title)
     plt.xlabel("m")
     plt.ylabel("Ec")
     plt.plot(m,Ec)
@@ -59,9 +60,31 @@ def Ana_m_E_Ec_M_Mc(filename):
 
     plt.figure()
     title = "m_Mc(M=%f)" %M[0]
+    plt.title(title)
     plt.xlabel("m")
     plt.ylabel("Mc")
     plt.plot(m,Mc)
+    plt.savefig(filename[:-4]+title+".png")
+
+def Ana_corr_E_M(filename):
+    j,Ecorr,Mcorr = np.loadtxt(filename,unpack=True,skiprows=2)
+
+    plt.figure()
+    title = "j_Ecorr"
+    plt.title(title)
+    plt.xlabel("j")
+    plt.ylabel("$\Gamma(E)$")
+    plt.ylim(0,1)
+    plt.plot(j,Ecorr)
+    plt.savefig(filename[:-4]+title+".png")
+
+    plt.figure()
+    title = "j_Mcorr"
+    plt.title(title)
+    plt.xlabel("j")
+    plt.ylabel("$\Gamma(M)$")
+    plt.ylim(0,1)
+    plt.plot(j,Mcorr)
     plt.savefig(filename[:-4]+title+".png")
 
 def main():
@@ -77,9 +100,11 @@ def main():
     #Ana_m_E_Ec_M_Mc("./data/Worff/output_m_E_Ec_M_Mc(D=2,L=64).dat")
     #Ana_m_E_Ec_M_Mc("./data/Irre_Worff/output_m_E_Ec_M_Mc(D=2,L=64).dat")
 
-    Ana_m_E_Ec_M_Mc("./data/Metropolis/output_m_E_Ec_M_Mc(D=3,L=32).dat")
-    Ana_m_E_Ec_M_Mc("./data/Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
-    Ana_m_E_Ec_M_Mc("./data/Irre_Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
+    #Ana_m_E_Ec_M_Mc("./data/Metropolis/output_m_E_Ec_M_Mc(D=3,L=32).dat")
+    #Ana_m_E_Ec_M_Mc("./data/Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
+    #Ana_m_E_Ec_M_Mc("./data/Irre_Worff/output_m_E_Ec_M_Mc(D=3,L=32).dat")
+
+    Ana_corr_E_M("./data/Metropolis/autocorr_E_M(D=3,L=32).dat")
 
 if __name__ == "__main__":
     main()

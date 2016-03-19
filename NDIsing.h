@@ -53,7 +53,18 @@ public:
     void Markov(std::string algorithm, int steps);
     // using selected algorithm to move
 
+//---------------tools----------------
+
+    double correlate(std::vector<double> A, int j);
+
 //---------------Write2file---------------
+    void output_autocorr_E_M(std::string algorithm,
+                             int equi_steps,
+                             int steps,
+                             int steps_ps,
+                             int max_corr_steps,
+                             std::string filename);
+
     void output_m_E_Ec_M_Mc(std::string algorithm,
                             int equi_steps,
                             int steps,

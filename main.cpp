@@ -6,7 +6,6 @@
 
 int main() {
     std::clock_t c_start = std::clock();
-
     // 2D parameters
     /*NDIsing miao(2,  // int D_set,
                  128,  // int L_set,
@@ -19,14 +18,15 @@ int main() {
     // 3D parameters
     NDIsing miao(3,  // int D_set,
                  32,  // int L_set,
-                 4.4,  // double T_set,
+                 3.4,  // double T_set,
                  1,  // double J_set,
                  0  // double H_set);
                 );
-    //std::string algorithm = "Metropolis";
+    std::string algorithm = "Metropolis";
     //std::string algorithm = "Worff";
-    std::string algorithm = "Irre_Worff";
+    //std::string algorithm = "Irre_Worff";
 
+    /*
     miao.Metropolis(10000);
     miao.output_m_E_Ec_M_Mc(algorithm,  // std::string algorithm,
                             100,  // int equi_steps,
@@ -35,6 +35,14 @@ int main() {
                             1100,  // int blocks_end,
                             100,  // int d_blocks,
                             "./data/" +algorithm + "/output_m_E_Ec_M_Mc");
+    */
+
+    miao.output_autocorr_E_M(algorithm, // std::string algorithm,
+                             10000,     // int equi_steps,
+                             100000,     // int steps,
+                             1000,      // int steps_ps,
+                             1000,       // int max_corr_steps,
+                             "./data/" +algorithm + "/autocorr_E_M");
 
     /*miao.Metropolis(10000);
     miao.output_T_E_C_M_X(algorithm,  // std::string algorithm,

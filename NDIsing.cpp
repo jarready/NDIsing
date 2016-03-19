@@ -57,7 +57,6 @@ double NDIsing::ave_E() {
     return E;
 }//end ave_E
 
-
 double NDIsing::ave_M() {
     double M = 0;
     for (int pos = 0; pos < mark.size(); ++pos) {
@@ -66,10 +65,4 @@ double NDIsing::ave_M() {
     M /= mark.size();  // average M
     return M;
 }//end ave_M
-
-
-
-
-
-
 
